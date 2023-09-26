@@ -4,13 +4,14 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
 import ProTip from './ProTip';
+import TaskList from './components/TaskList';
 
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        The MUI team
+      <Link color="inherit" href="https://valiolar.com/">
+        Volar
       </Link>{' '}
       {new Date().getFullYear()}.
     </Typography>
@@ -22,8 +23,9 @@ export default function App() {
     <Container maxWidth="sm">
       <Box sx={{ my: 4 }}>
         <Typography variant="h4" component="h1" gutterBottom>
-          Volar + MUI v5 example
+          WIP - Volar Mobx Todo with MUI
         </Typography>
+        <TaskList />
         <ProTip />
         <Copyright />
       </Box>

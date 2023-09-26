@@ -1,0 +1,51 @@
+version: "3"
+
+services:
+  server:
+    image: volar-server
+    container_name: volar-server
+    build:
+      context: ./server
+      dockerfile: ./Dockerfile.local
+    environment:
+      PORT: "4500"
+      DATABASE_CONNECTION_STRING: "mongodb://mongodb:27017/volar"
+    ports:
+      - '4500:4500'
+    depends_on:
+      - mongodb
+    entrypoint:
+      - npm
+      - run
+      - start:dev
+    volumes:
+      - ./server:/usr/src/app
+
+  client:
+    image: volar-client
+    container_name: volar-client
+    build:
+      context: ./client
+      dockerfile: ./Dockerfile.local
+    environment:
+      REACT_APP_SERVER_URI: "http://localhost:4500"
+    ports:
+      - '4501:4501'
+    entrypoint:
+      - npm
+      - run
+      - start
+    volumes:
+      - ./client:/app
+
+  mongodb:
+    image: mongo:latest
+    container_name: volar-mongo
+    ports:
+      - "27021:27017"
+    command: --quiet
+    volumes:
+      - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:

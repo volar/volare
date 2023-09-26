@@ -13,6 +13,13 @@ npm run start
 ## What's next?
 - [ ] Work on the dashboard
 - [ ] make it pretty and responsive
+- [ ] add ci/cd
+- [ ] add tests
+- [ ] add playwright
+- [ ] deploy to netlify
+- [ ] setup mongo
+- [ ] setup express
+- [ ] setup mongoose
 - [ ] Add routes
 - [ ] Add a blog page
 - [ ] Add a contact form
