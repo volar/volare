@@ -13,12 +13,23 @@ const app_service_1 = require("./app.service");
 const tasks_module_1 = require("./tasks/tasks.module");
 const tasks_controller_1 = require("./tasks/tasks.controller");
 const config_1 = require("@nestjs/config");
+const mongoose_1 = require("@nestjs/mongoose");
+const blog_module_1 = require("./blog/blog.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [tasks_module_1.TasksModule, config_1.ConfigModule.forRoot()],
+        imports: [
+            tasks_module_1.TasksModule,
+            config_1.ConfigModule.forRoot({
+                isGlobal: true,
+                envFilePath: ['.env.development.local', '.env.development'],
+            }),
+            mongoose_1.MongooseModule.forRoot(process.env.DATABASE_CONNECTION_STRING ||
+                'mongodb://127.0.0.1:27017/volare'),
+            blog_module_1.BlogModule,
+        ],
         controllers: [app_controller_1.AppController, tasks_controller_1.TasksController],
         providers: [app_service_1.AppService],
     })
