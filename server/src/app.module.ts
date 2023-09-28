@@ -9,6 +9,5 @@ import { ConfigModule } from '@nestjs/config';
   imports: [TasksModule, ConfigModule.forRoot()],
   controllers: [AppController, TasksController],
   providers: [AppService],
-  
 })
 export class AppModule {}
